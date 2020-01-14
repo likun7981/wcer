@@ -10,6 +10,13 @@ import * as client from "raw-loader!./client.ts"
 let chunkVersions: object = {}
 let manifestTimestamp: number
 
+if(process) {
+  process.on('uncaughtException', function (err) {
+    console.error(err.stack);
+    console.log("Node NOT Exiting...");
+  });
+}
+
 export default class ReloadPlugin extends AbstractPlugin {
   private port: number
   private server: Server | null = null
@@ -100,7 +107,7 @@ export default class ReloadPlugin extends AbstractPlugin {
   }
   generate(comp, done) {
     if(!this.manifest) return done()
-    comp.fileDependencies.push(this.manifestPath)
+    comp.fileDependencies.add(this.manifestPath)
     let source = JSON.stringify(this.manifest)
     comp.assets['manifest.json'] = {
       source: () => source,

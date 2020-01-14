@@ -22,6 +22,7 @@ var WebpackReloadPlugin: boolean = false;
     try {
       socket = new WebSocket(wsHost+id.toString())
     } catch (err) {
+      console.log(err, 1)
       console.log(err)
     }
     
