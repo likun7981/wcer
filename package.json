@@ -1,6 +1,6 @@
 {
   "name": "wcer2",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": false,
   "description": "Watch for changes and force the reload of the chrome extension",
   "main": "build/index.js",
